@@ -70,5 +70,4 @@ int main(void) {
 	
 	printf("큐에 남아 있는 정수: ");
 	queue_print(q);
-
 }
