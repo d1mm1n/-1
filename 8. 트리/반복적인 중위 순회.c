@@ -38,8 +38,8 @@ void inorder_iter(TreeNode *root) {
 	}
 }
 //          A
-//    B          C
-//  D   E      F   G
+//     B          C
+//   D   E      F   G
 //        H       I
 
 
