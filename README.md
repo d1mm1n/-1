@@ -10,3 +10,8 @@ git commit -m "커밋할 메세지"
 git push
 ```
 
+```
+단원별 연습문제 푼거는 블로그에 있움
+https://d1m-coding.tistory.com/
+```
+
