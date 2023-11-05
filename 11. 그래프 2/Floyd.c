@@ -14,10 +14,14 @@ typedef struct GraphType {
 }GraphType;
 
 int A[MAX_VERTICES][MAX_VERTICES];
+int num = -1;
 
 void printA(GraphType* g) {
 	int i, j;
-	printf("=======================================");
+	printf("=======================================\n");
+	printf("A%d", num);
+	num++;
+	printf("\n");
 	for ( i = 0; i < g->n; i++) {
 		for (j = 0; j < g->n; j++) {
 			if (A[i][j] == INF) printf(" * ");
@@ -42,15 +46,32 @@ void floyd(GraphType* g) {
 	for (k = 0; k < g->n; k++) {
 		for (i = 0; i < g->n; i++) {
 			for (j = 0; j < g->n; j++) {
-				if (A[i][k] + A[k][j] < A[i][j]) A[i][j] = A[i][j] + A[k][j];
+				if (A[i][k] + A[k][j] < A[i][j])  A[i][j] = A[i][k] + A[k][j];
 			}
 		}
 		printA(g);
 	}
+	
+	
 }
+
+
+
 
 int main(void) {
 	GraphType g = { 6,{{0,10,INF,30,100,INF},{INF,0,50,INF,INF,INF},{INF,INF,0,INF,10,5},{INF,INF,20,0,INF,15},{INF,INF,INF,60,0,INF},{INF,INF,INF,INF,INF,0}} };
 	floyd(&g);
+	// 최단 경로 가중치의 합을 계산
+
+	int total_weight = 0;
+	for (int i = 0; i < g.n; i++) {
+		for (int j = 0; j < g.n; j++) {
+			if (i != j && A[i][j] != INF) {
+				total_weight += A[i][j];
+			}
+		}
+	}
+
+	printf("\n최단거리 가중치의 합: %d\n", total_weight);
 	return 0;
 }

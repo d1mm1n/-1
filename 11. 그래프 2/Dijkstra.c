@@ -76,5 +76,12 @@ void shortest_path(GraphType* g, int start) {
 int main(void) {
 	GraphType g = { 6,{{0,10,INF,30,100,INF},{INF,0,50,INF,INF,INF},{INF,INF,0,INF,10,5},{INF,INF,20,0,INF,15},{INF,INF,INF,60,0,INF},{INF,INF,INF,INF,INF,0}} };
 	shortest_path(&g, 0);
+	//가중치의 합 구하기
+	int sum = 0;
+
+	for (int i = 0; i < g.n; i++) {
+		sum += distance[i];
+	}
+	printf("가중치의 합: %d", sum);
 	return 0;
 }
